@@ -16,14 +16,6 @@
 		833409251E191CF2008C2E1A /* CurlNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409231E191CF2008C2E1A /* CurlNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		833409281E191CF2008C2E1A /* CurlNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 833409211E191CF2008C2E1A /* CurlNetwork.framework */; };
 		833409291E191CF2008C2E1A /* CurlNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 833409211E191CF2008C2E1A /* CurlNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		833409441E193AB1008C2E1A /* CCCurlConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334092E1E193AB1008C2E1A /* CCCurlConnection.m */; };
-		833409451E193AB1008C2E1A /* CCHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334092F1E193AB1008C2E1A /* CCHttpClient.m */; };
-		833409461E193AB1008C2E1A /* CCHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409301E193AB1008C2E1A /* CCHttpClient.h */; };
-		833409471E193AB1008C2E1A /* CCHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409311E193AB1008C2E1A /* CCHttpRequest.m */; };
-		833409481E193AB1008C2E1A /* CCCurlConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409321E193AB1008C2E1A /* CCCurlConnection.h */; };
-		833409491E193AB1008C2E1A /* CCHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409331E193AB1008C2E1A /* CCHttpResponse.m */; };
-		8334094A1E193AB1008C2E1A /* CCHttpResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409341E193AB1008C2E1A /* CCHttpResponse.h */; };
-		8334094B1E193AB1008C2E1A /* CCHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409351E193AB1008C2E1A /* CCHttpRequest.h */; };
 		8334094C1E193AB1008C2E1A /* curl.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409391E193AB1008C2E1A /* curl.h */; };
 		8334094D1E193AB1008C2E1A /* curlbuild.h in Headers */ = {isa = PBXBuildFile; fileRef = 8334093A1E193AB1008C2E1A /* curlbuild.h */; };
 		8334094E1E193AB1008C2E1A /* curlrules.h in Headers */ = {isa = PBXBuildFile; fileRef = 8334093B1E193AB1008C2E1A /* curlrules.h */; };
@@ -48,6 +40,18 @@
 		8334097C1E193B5E008C2E1A /* NSString+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409721E193B5E008C2E1A /* NSString+Crypto.m */; };
 		8334097D1E193B5E008C2E1A /* NSString+Crypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409731E193B5E008C2E1A /* NSString+Crypto.h */; };
 		8334097E1E193B5E008C2E1A /* NSURLRequest+MutableCopyWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409741E193B5E008C2E1A /* NSURLRequest+MutableCopyWorkaround.m */; };
+		8334099F1E19845D008C2E1A /* CCCurlConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409921E19845D008C2E1A /* CCCurlConnectionOperation.h */; };
+		833409A01E19845D008C2E1A /* CCCurlConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409931E19845D008C2E1A /* CCCurlConnectionOperation.m */; };
+		833409A11E19845D008C2E1A /* CCCurlRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409941E19845D008C2E1A /* CCCurlRequest.h */; };
+		833409A21E19845D008C2E1A /* CCCurlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409951E19845D008C2E1A /* CCCurlRequest.m */; };
+		833409A31E19845D008C2E1A /* CCCurlResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409961E19845D008C2E1A /* CCCurlResponse.h */; };
+		833409A41E19845D008C2E1A /* CCCurlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 833409971E19845D008C2E1A /* CCCurlResponse.m */; };
+		833409A51E19845D008C2E1A /* CCHttpConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 833409991E19845D008C2E1A /* CCHttpConnectionOperation.h */; };
+		833409A61E19845D008C2E1A /* CCHttpConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334099A1E19845D008C2E1A /* CCHttpConnectionOperation.m */; };
+		833409A71E19845D008C2E1A /* CCHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 8334099B1E19845D008C2E1A /* CCHttpRequest.h */; };
+		833409A81E19845D008C2E1A /* CCHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334099C1E19845D008C2E1A /* CCHttpRequest.m */; };
+		833409A91E19845D008C2E1A /* CCHttpResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 8334099D1E19845D008C2E1A /* CCHttpResponse.h */; };
+		833409AA1E19845D008C2E1A /* CCHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334099E1E19845D008C2E1A /* CCHttpResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,14 +100,6 @@
 		833409211E191CF2008C2E1A /* CurlNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CurlNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		833409231E191CF2008C2E1A /* CurlNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurlNetwork.h; sourceTree = "<group>"; };
 		833409241E191CF2008C2E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8334092E1E193AB1008C2E1A /* CCCurlConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCurlConnection.m; sourceTree = "<group>"; };
-		8334092F1E193AB1008C2E1A /* CCHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpClient.m; sourceTree = "<group>"; };
-		833409301E193AB1008C2E1A /* CCHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpClient.h; sourceTree = "<group>"; };
-		833409311E193AB1008C2E1A /* CCHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpRequest.m; sourceTree = "<group>"; };
-		833409321E193AB1008C2E1A /* CCCurlConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCurlConnection.h; sourceTree = "<group>"; };
-		833409331E193AB1008C2E1A /* CCHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpResponse.m; sourceTree = "<group>"; };
-		833409341E193AB1008C2E1A /* CCHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpResponse.h; sourceTree = "<group>"; };
-		833409351E193AB1008C2E1A /* CCHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpRequest.h; sourceTree = "<group>"; };
 		833409391E193AB1008C2E1A /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
 		8334093A1E193AB1008C2E1A /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
 		8334093B1E193AB1008C2E1A /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
@@ -128,6 +124,18 @@
 		833409721E193B5E008C2E1A /* NSString+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Crypto.m"; sourceTree = "<group>"; };
 		833409731E193B5E008C2E1A /* NSString+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Crypto.h"; sourceTree = "<group>"; };
 		833409741E193B5E008C2E1A /* NSURLRequest+MutableCopyWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+MutableCopyWorkaround.m"; sourceTree = "<group>"; };
+		833409921E19845D008C2E1A /* CCCurlConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCurlConnectionOperation.h; sourceTree = "<group>"; };
+		833409931E19845D008C2E1A /* CCCurlConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCurlConnectionOperation.m; sourceTree = "<group>"; };
+		833409941E19845D008C2E1A /* CCCurlRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCurlRequest.h; sourceTree = "<group>"; };
+		833409951E19845D008C2E1A /* CCCurlRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCurlRequest.m; sourceTree = "<group>"; };
+		833409961E19845D008C2E1A /* CCCurlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCurlResponse.h; sourceTree = "<group>"; };
+		833409971E19845D008C2E1A /* CCCurlResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCurlResponse.m; sourceTree = "<group>"; };
+		833409991E19845D008C2E1A /* CCHttpConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpConnectionOperation.h; sourceTree = "<group>"; };
+		8334099A1E19845D008C2E1A /* CCHttpConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpConnectionOperation.m; sourceTree = "<group>"; };
+		8334099B1E19845D008C2E1A /* CCHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpRequest.h; sourceTree = "<group>"; };
+		8334099C1E19845D008C2E1A /* CCHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpRequest.m; sourceTree = "<group>"; };
+		8334099D1E19845D008C2E1A /* CCHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpResponse.h; sourceTree = "<group>"; };
+		8334099E1E19845D008C2E1A /* CCHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,14 +215,8 @@
 		833409221E191CF2008C2E1A /* CurlNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				833409321E193AB1008C2E1A /* CCCurlConnection.h */,
-				8334092E1E193AB1008C2E1A /* CCCurlConnection.m */,
-				8334092F1E193AB1008C2E1A /* CCHttpClient.m */,
-				833409301E193AB1008C2E1A /* CCHttpClient.h */,
-				833409351E193AB1008C2E1A /* CCHttpRequest.h */,
-				833409311E193AB1008C2E1A /* CCHttpRequest.m */,
-				833409341E193AB1008C2E1A /* CCHttpResponse.h */,
-				833409331E193AB1008C2E1A /* CCHttpResponse.m */,
+				833409911E19845D008C2E1A /* CurlConnection */,
+				833409981E19845D008C2E1A /* CurlHttp */,
 				833409361E193AB1008C2E1A /* libcurl-ios-dist */,
 				833409231E191CF2008C2E1A /* CurlNetwork.h */,
 				833409241E191CF2008C2E1A /* Info.plist */,
@@ -298,6 +300,32 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		833409911E19845D008C2E1A /* CurlConnection */ = {
+			isa = PBXGroup;
+			children = (
+				833409921E19845D008C2E1A /* CCCurlConnectionOperation.h */,
+				833409931E19845D008C2E1A /* CCCurlConnectionOperation.m */,
+				833409941E19845D008C2E1A /* CCCurlRequest.h */,
+				833409951E19845D008C2E1A /* CCCurlRequest.m */,
+				833409961E19845D008C2E1A /* CCCurlResponse.h */,
+				833409971E19845D008C2E1A /* CCCurlResponse.m */,
+			);
+			path = CurlConnection;
+			sourceTree = "<group>";
+		};
+		833409981E19845D008C2E1A /* CurlHttp */ = {
+			isa = PBXGroup;
+			children = (
+				833409991E19845D008C2E1A /* CCHttpConnectionOperation.h */,
+				8334099A1E19845D008C2E1A /* CCHttpConnectionOperation.m */,
+				8334099B1E19845D008C2E1A /* CCHttpRequest.h */,
+				8334099C1E19845D008C2E1A /* CCHttpRequest.m */,
+				8334099D1E19845D008C2E1A /* CCHttpResponse.h */,
+				8334099E1E19845D008C2E1A /* CCHttpResponse.m */,
+			);
+			path = CurlHttp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -306,18 +334,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				833409521E193AB1008C2E1A /* multi.h in Headers */,
+				8334099F1E19845D008C2E1A /* CCCurlConnectionOperation.h in Headers */,
 				833409531E193AB1008C2E1A /* stdcheaders.h in Headers */,
 				833409501E193AB1008C2E1A /* easy.h in Headers */,
 				833409511E193AB1008C2E1A /* mprintf.h in Headers */,
 				8334094F1E193AB1008C2E1A /* curlver.h in Headers */,
 				833409251E191CF2008C2E1A /* CurlNetwork.h in Headers */,
-				833409461E193AB1008C2E1A /* CCHttpClient.h in Headers */,
 				8334094E1E193AB1008C2E1A /* curlrules.h in Headers */,
+				833409A51E19845D008C2E1A /* CCHttpConnectionOperation.h in Headers */,
 				8334094C1E193AB1008C2E1A /* curl.h in Headers */,
 				8334094D1E193AB1008C2E1A /* curlbuild.h in Headers */,
-				833409481E193AB1008C2E1A /* CCCurlConnection.h in Headers */,
-				8334094B1E193AB1008C2E1A /* CCHttpRequest.h in Headers */,
-				8334094A1E193AB1008C2E1A /* CCHttpResponse.h in Headers */,
+				833409A91E19845D008C2E1A /* CCHttpResponse.h in Headers */,
+				833409A31E19845D008C2E1A /* CCCurlResponse.h in Headers */,
+				833409A11E19845D008C2E1A /* CCCurlRequest.h in Headers */,
+				833409A71E19845D008C2E1A /* CCHttpRequest.h in Headers */,
 				833409541E193AB1008C2E1A /* typecheck-gcc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,10 +509,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833409491E193AB1008C2E1A /* CCHttpResponse.m in Sources */,
-				833409451E193AB1008C2E1A /* CCHttpClient.m in Sources */,
-				833409471E193AB1008C2E1A /* CCHttpRequest.m in Sources */,
-				833409441E193AB1008C2E1A /* CCCurlConnection.m in Sources */,
+				833409A01E19845D008C2E1A /* CCCurlConnectionOperation.m in Sources */,
+				833409A61E19845D008C2E1A /* CCHttpConnectionOperation.m in Sources */,
+				833409A21E19845D008C2E1A /* CCCurlRequest.m in Sources */,
+				833409A81E19845D008C2E1A /* CCHttpRequest.m in Sources */,
+				833409AA1E19845D008C2E1A /* CCHttpResponse.m in Sources */,
+				833409A41E19845D008C2E1A /* CCCurlResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

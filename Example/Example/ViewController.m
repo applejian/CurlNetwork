@@ -7,11 +7,18 @@
 //
 
 #import "ViewController.h"
-#import "CCHttpClient.h"
+
+#import "CCCurlConnectionOperation.h"
+#import "CCCurlRequest.h"
+#import "CCCurlResponse.h"
+
+#import "CCHttpRequest.h"
+#import "CCHttpResponse.h"
+#import "CCHttpConnectionOperation.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) CCHttpClient *client;
+@property (nonatomic, strong) CCCurlConnectionOperation *con;
 
 @property (nonatomic, strong) UIWebView *webView;
 
@@ -23,8 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _client = [[CCHttpClient alloc] init];
-    [_client doTest];
+//    [self testCurlConnection];
+    [self testHttpConnection];
     
     _webView = [[UIWebView alloc] init];
     _webView.frame = self.view.bounds;
@@ -36,6 +43,31 @@
     
 }
 
+- (void)testCurlConnection
+{
+    CCCurlRequest *request = [[CCCurlRequest alloc] init];
+    CCCurlResponse *response = [[CCCurlResponse alloc] init];
+    CCCurlConnectionOperation *con = [[CCCurlConnectionOperation alloc] initWithRequest:request response:response];
+    [con setCompletionBlock:^{
+        NSLog(@"responseHeader: %@", [[NSString alloc] initWithData:response.responseHeader encoding:NSUTF8StringEncoding]);
+        NSLog(@"response: %@", [[NSString alloc] initWithData:response.responseData encoding:NSUTF8StringEncoding]);
+    }];
+    [con start];
+}
+
+- (void)testHttpConnection
+{
+    CCHttpRequest *request = [[CCHttpRequest alloc] init];
+    CCHttpResponse *response = [[CCHttpResponse alloc] init];
+    CCHttpConnectionOperation *t = [[CCHttpConnectionOperation alloc] initWithRequest:request response:response];
+    [t setCompletionBlockWithSuccess:^(CCHttpConnectionOperation *operation, id responseObject) {
+        NSLog(@"responseHeader: %@", [[NSString alloc] initWithData:response.responseHeader encoding:NSUTF8StringEncoding]);
+        NSLog(@"response: %@", [[NSString alloc] initWithData:response.responseData encoding:NSUTF8StringEncoding]);
+    } failure:^(CCHttpConnectionOperation *operation, NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+    [[NSOperationQueue currentQueue] addOperation:t];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

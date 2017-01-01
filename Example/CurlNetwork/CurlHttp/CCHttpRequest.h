@@ -6,7 +6,7 @@
 //  Copyright © 2017年 zhuruhong. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CCCurlRequest.h"
 
 typedef NS_ENUM(NSInteger, CCHttpRequestType) {
     CCHttpRequestTypeGet,
@@ -16,13 +16,10 @@ typedef NS_ENUM(NSInteger, CCHttpRequestType) {
     CCHttpRequestTypeUnknown
 };
 
-@interface CCHttpRequest : NSObject
+@interface CCHttpRequest : CCCurlRequest
 
 /** see CCHttpRequestType */
 @property (nonatomic, assign) CCHttpRequestType requestType;
-
-/** target url that this request is sent to */
-@property (nonatomic, copy) NSString *url;
 
 /** custom http headers */
 @property (nonatomic, strong) NSMutableDictionary *headers;
@@ -34,11 +31,5 @@ typedef NS_ENUM(NSInteger, CCHttpRequestType) {
 
 /** You can add your customed data here */
 @property (nonatomic, strong) NSMutableDictionary *userData;
-
-/** the timeout value for connecting */
-@property (nonatomic, assign) NSTimeInterval timeoutForConnect;
-
-/** the timeout value for reading */
-@property (nonatomic, assign) NSTimeInterval timeoutForRead;
 
 @end
