@@ -131,8 +131,11 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream)
 
 @interface CCCurlConnectionOperation ()
 
-@property (readwrite, nonatomic, assign) CCOperationState state;
-@property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
+@property (nonatomic, assign) CCOperationState state;
+@property (nonatomic, strong) NSRecursiveLock *lock;
+
+/** Instance of CURL */
+@property (nonatomic, assign, readonly) CURL *curl;
 
 @end
 
@@ -217,25 +220,21 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream)
     [self.lock unlock];
 }
 
-- (BOOL)configureCURL
+- (BOOL)curlConfigure
 {
     CURL *handle = _curl;
     NSString *url = _request.url;
     NSTimeInterval timeoutForConnect = _request.timeoutForConnect;
     NSTimeInterval timeoutForRead = _request.timeoutForRead;
+    BOOL result = YES;
     
     if (!handle || url.length == 0) {
-        return NO;
+        result = NO;
     }
     
     char *errorBuffer;
     CURLcode code;
     code = curl_easy_setopt(handle, CURLOPT_ERRORBUFFER, errorBuffer);
-    if (CURLE_OK != code) {
-        self.error = [self errorWithCode:code errorMsg:errorBuffer];
-        return NO;
-    }
-    
     code = curl_easy_setopt(handle, CURLOPT_URL, [url UTF8String]);
     code = curl_easy_setopt(handle, CURLOPT_CONNECTTIMEOUT, timeoutForConnect);
     code = curl_easy_setopt(handle, CURLOPT_TIMEOUT, timeoutForRead);
@@ -244,12 +243,22 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream)
     code = curl_easy_setopt(handle, CURLOPT_HEADERFUNCTION, writeHeaderData);
     code = curl_easy_setopt(handle, CURLOPT_HEADERDATA, self);
     
-    if (CURLE_OK != code) {
-        self.error = [self errorWithCode:code];
-        return NO;
+    if (CURLE_OK != code || NULL != errorBuffer) {
+        self.error = [self errorWithCode:code errorMsg:errorBuffer];
+        result = NO;
     }
     
-    return YES;
+    return result;
+}
+
+- (void)curlWillPerform:(CURL *)handle
+{
+    //implementation In a subclass
+}
+
+- (void)curlDidPerform:(CURL *)handle
+{
+    //implementation In a subclass
 }
 
 - (NSError *)errorWithCode:(CURLcode)aCode
@@ -341,17 +350,21 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream)
         return;
     }
     
-    if (![self configureCURL]) {
+    if (![self curlConfigure]) {
         [self finish];
         [self.lock unlock];
         return;
     }
+    
+    [self curlWillPerform:self.curl];
     
     CURLcode code;
     code = curl_easy_perform(self.curl);
     if (CURLE_OK != code) {
         self.error = [self errorWithCode:code];
     }
+    
+    [self curlDidPerform:self.curl];
     
     [self finish];
     [self.lock unlock];

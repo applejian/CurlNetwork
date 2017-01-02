@@ -32,8 +32,10 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 @implementation CCHttpConnectionOperation
 
-- (BOOL)configureCURL
+- (void)curlWillPerform:(CURL *)handle
 {
+    [super curlWillPerform:handle];
+    
     CCHttpRequest *request = (CCHttpRequest *)self.request;
     CURLcode code;
     
@@ -45,35 +47,55 @@ static dispatch_group_t http_request_operation_completion_group() {
         headers = curl_slist_append(headers, [item UTF8String]);
     }
     /* set custom headers for curl */
-    code = curl_easy_setopt(self.curl, CURLOPT_HTTPHEADER, headers);
+    code = curl_easy_setopt(handle, CURLOPT_HTTPHEADER, headers);
     if (CURLE_OK != code) {
         self.error = [self errorWithCode:code];
-        return NO;
     }
     
     /* get cookie file */
     if (self.cookieFilename.length > 0) {
-        code = curl_easy_setopt(self.curl, CURLOPT_COOKIEFILE, [self.cookieFilename UTF8String]);
-        code = curl_easy_setopt(self.curl, CURLOPT_COOKIEJAR, [self.cookieFilename UTF8String]);
+        code = curl_easy_setopt(handle, CURLOPT_COOKIEFILE, [self.cookieFilename UTF8String]);
+        code = curl_easy_setopt(handle, CURLOPT_COOKIEJAR, [self.cookieFilename UTF8String]);
     }
     
     /* get ca file for ssl */
     if (self.sslCaFilename.length == 0) {
-        curl_easy_setopt(self.curl, CURLOPT_SSL_VERIFYPEER, 0L);
-        curl_easy_setopt(self.curl, CURLOPT_SSL_VERIFYHOST, 0L);
+        curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 0L);
     } else {
-        curl_easy_setopt(self.curl, CURLOPT_SSL_VERIFYPEER, 1L);
-        curl_easy_setopt(self.curl, CURLOPT_SSL_VERIFYHOST, 2L);
-        curl_easy_setopt(self.curl, CURLOPT_CAINFO, [self.sslCaFilename UTF8String]);
+        curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 1L);
+        curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 2L);
+        curl_easy_setopt(handle, CURLOPT_CAINFO, [self.sslCaFilename UTF8String]);
     }
     
     // FIXED #3224: The subthread of CCHttpClient interrupts main thread if timeout comes.
     // Document is here: http://curl.haxx.se/libcurl/c/curl_easy_setopt.html#CURLOPTNOSIGNAL
-    curl_easy_setopt(self.curl, CURLOPT_NOSIGNAL, 1L);
+    curl_easy_setopt(handle, CURLOPT_NOSIGNAL, 1L);
     
-//    curl_easy_setopt(self.curl, CURLOPT_ACCEPT_ENCODING, "");//? result failed
+    curl_easy_setopt(handle, CURLOPT_ACCEPT_ENCODING, "gzip");
+}
+
+- (void)curlDidPerform:(CURL *)handle
+{
+    [super curlDidPerform:handle];
     
-    return [super configureCURL];
+    CCHttpResponse *response = (CCHttpResponse *)self.response;
+    long responseCode = -1;
+    CURLcode code;
+    
+    code = curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &responseCode);
+    if (code != CURLE_OK) {
+        self.error = [self errorWithCode:code];
+        return;
+    }
+    
+    response.responseCode = responseCode;
+    if (!(responseCode >= 200 && responseCode < 300)) {
+        NSString *msg = [NSString stringWithFormat:@"%s", curl_easy_strerror(code)];
+        NSDictionary *userInfo = @{ @"msg": msg };
+        self.error = [NSError errorWithDomain:NSURLErrorDomain code:responseCode userInfo:userInfo];
+        return;
+    }
 }
 
 - (void)setCompletionBlockWithSuccess:(void (^)(CCHttpConnectionOperation *operation, id responseObject))success failure:(void (^)(CCHttpConnectionOperation *operation, NSError *error))failure
@@ -95,16 +117,6 @@ static dispatch_group_t http_request_operation_completion_group() {
                     });
                 }
             } else {
-                /*
-                long responseCode = -1;
-                curl_easy_getinfo(self.curl, CURLINFO_RESPONSE_CODE, &responseCode);
-                if (responseCode < 200 || responseCode >= 300) {
-                    self.error = [NSError errorWithDomain:NSURLErrorDomain code:responseCode userInfo:nil];
-                }
-                
-                CCHttpResponse *response = (CCHttpResponse *)self.response;
-                response.responseCode = responseCode;
-                */
                 id responseObject = self.responseObject;
                 if (self.error) {
                     if (failure) {

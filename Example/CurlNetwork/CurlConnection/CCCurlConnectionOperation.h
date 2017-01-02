@@ -32,10 +32,6 @@
  */
 @property (nonatomic, strong) dispatch_group_t completionGroup;
 
-
-/** Instance of CURL */
-@property (nonatomic, assign, readonly) CURL *curl;
-
 /** The request used by the operation's connection */
 @property (nonatomic, strong) CCCurlRequest *request;
 
@@ -47,7 +43,8 @@
 
 - (instancetype)initWithRequest:(CCCurlRequest *)aRequest response:(CCCurlResponse *)aResponse;
 
-- (BOOL)configureCURL;
+- (void)curlWillPerform:(CURL *)handle;
+- (void)curlDidPerform:(CURL *)handle;
 
 - (NSError *)errorWithCode:(CURLcode)aCode;
 - (NSError *)errorWithCode:(CURLcode)aCode errorMsg:(const char *)aErrorMsg;
