@@ -232,7 +232,7 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream)
         result = NO;
     }
     
-    char *errorBuffer;
+    char *errorBuffer = NULL;
     CURLcode code;
     code = curl_easy_setopt(handle, CURLOPT_ERRORBUFFER, errorBuffer);
     code = curl_easy_setopt(handle, CURLOPT_URL, [url UTF8String]);

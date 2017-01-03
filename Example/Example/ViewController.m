@@ -16,6 +16,9 @@
 #import "CCHttpResponse.h"
 #import "CCHttpConnectionOperation.h"
 
+#import "CCHttpGetOperation.h"
+#import "CCHttpPostOperation.h"
+
 @interface ViewController ()
 
 @property (nonatomic, strong) CCCurlConnectionOperation *con;
@@ -30,8 +33,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    [self testCurlConnection];
+    [self testCurlConnection];
+    NSLog(@"after test curl connection");
     [self testHttpConnection];
+    NSLog(@"after test http connection");
+    [self testHttpGetConnection];
+    NSLog(@"after test http get connection");
+    [self testHttpPostConnection];
+    NSLog(@"after test http post connection");
     
     _webView = [[UIWebView alloc] init];
     _webView.frame = self.view.bounds;
@@ -69,10 +78,32 @@
     [[NSOperationQueue currentQueue] addOperation:t];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)testHttpGetConnection
+{
+    CCHttpRequest *request = [[CCHttpRequest alloc] init];
+    CCHttpResponse *response = [[CCHttpResponse alloc] init];
+    CCHttpGetOperation *t = [[CCHttpGetOperation alloc] initWithRequest:request response:response];
+    [t setCompletionBlockWithSuccess:^(CCHttpConnectionOperation *operation, id responseObject) {
+        NSLog(@"responseHeader: %@", [[NSString alloc] initWithData:response.responseHeader encoding:NSUTF8StringEncoding]);
+        NSLog(@"response: %@", [[NSString alloc] initWithData:response.responseData encoding:NSUTF8StringEncoding]);
+    } failure:^(CCHttpConnectionOperation *operation, NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+    [[NSOperationQueue currentQueue] addOperation:t];
 }
 
+- (void)testHttpPostConnection
+{
+    CCHttpRequest *request = [[CCHttpRequest alloc] init];
+    CCHttpResponse *response = [[CCHttpResponse alloc] init];
+    CCHttpPostOperation *t = [[CCHttpPostOperation alloc] initWithRequest:request response:response];
+    [t setCompletionBlockWithSuccess:^(CCHttpConnectionOperation *operation, id responseObject) {
+        NSLog(@"responseHeader: %@", [[NSString alloc] initWithData:response.responseHeader encoding:NSUTF8StringEncoding]);
+        NSLog(@"response: %@", [[NSString alloc] initWithData:response.responseData encoding:NSUTF8StringEncoding]);
+    } failure:^(CCHttpConnectionOperation *operation, NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+    [[NSOperationQueue currentQueue] addOperation:t];
+}
 
 @end

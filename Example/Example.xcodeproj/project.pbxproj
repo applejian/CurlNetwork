@@ -52,6 +52,10 @@
 		833409A81E19845D008C2E1A /* CCHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334099C1E19845D008C2E1A /* CCHttpRequest.m */; };
 		833409A91E19845D008C2E1A /* CCHttpResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 8334099D1E19845D008C2E1A /* CCHttpResponse.h */; };
 		833409AA1E19845D008C2E1A /* CCHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8334099E1E19845D008C2E1A /* CCHttpResponse.m */; };
+		83A46B491E1BFBFC00523E89 /* CCHttpPostOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A46B451E1BFBFC00523E89 /* CCHttpPostOperation.m */; };
+		83A46B4A1E1BFBFC00523E89 /* CCHttpPostOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A46B461E1BFBFC00523E89 /* CCHttpPostOperation.h */; };
+		83A46B4B1E1BFBFC00523E89 /* CCHttpGetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A46B471E1BFBFC00523E89 /* CCHttpGetOperation.m */; };
+		83A46B4C1E1BFBFC00523E89 /* CCHttpGetOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A46B481E1BFBFC00523E89 /* CCHttpGetOperation.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +140,10 @@
 		8334099C1E19845D008C2E1A /* CCHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpRequest.m; sourceTree = "<group>"; };
 		8334099D1E19845D008C2E1A /* CCHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpResponse.h; sourceTree = "<group>"; };
 		8334099E1E19845D008C2E1A /* CCHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpResponse.m; sourceTree = "<group>"; };
+		83A46B451E1BFBFC00523E89 /* CCHttpPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpPostOperation.m; sourceTree = "<group>"; };
+		83A46B461E1BFBFC00523E89 /* CCHttpPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpPostOperation.h; sourceTree = "<group>"; };
+		83A46B471E1BFBFC00523E89 /* CCHttpGetOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHttpGetOperation.m; sourceTree = "<group>"; };
+		83A46B481E1BFBFC00523E89 /* CCHttpGetOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHttpGetOperation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +324,10 @@
 		833409981E19845D008C2E1A /* CurlHttp */ = {
 			isa = PBXGroup;
 			children = (
+				83A46B461E1BFBFC00523E89 /* CCHttpPostOperation.h */,
+				83A46B451E1BFBFC00523E89 /* CCHttpPostOperation.m */,
+				83A46B481E1BFBFC00523E89 /* CCHttpGetOperation.h */,
+				83A46B471E1BFBFC00523E89 /* CCHttpGetOperation.m */,
 				833409991E19845D008C2E1A /* CCHttpConnectionOperation.h */,
 				8334099A1E19845D008C2E1A /* CCHttpConnectionOperation.m */,
 				8334099B1E19845D008C2E1A /* CCHttpRequest.h */,
@@ -340,9 +352,11 @@
 				833409511E193AB1008C2E1A /* mprintf.h in Headers */,
 				8334094F1E193AB1008C2E1A /* curlver.h in Headers */,
 				833409251E191CF2008C2E1A /* CurlNetwork.h in Headers */,
+				83A46B4C1E1BFBFC00523E89 /* CCHttpGetOperation.h in Headers */,
 				8334094E1E193AB1008C2E1A /* curlrules.h in Headers */,
 				833409A51E19845D008C2E1A /* CCHttpConnectionOperation.h in Headers */,
 				8334094C1E193AB1008C2E1A /* curl.h in Headers */,
+				83A46B4A1E1BFBFC00523E89 /* CCHttpPostOperation.h in Headers */,
 				8334094D1E193AB1008C2E1A /* curlbuild.h in Headers */,
 				833409A91E19845D008C2E1A /* CCHttpResponse.h in Headers */,
 				833409A31E19845D008C2E1A /* CCCurlResponse.h in Headers */,
@@ -513,7 +527,9 @@
 				833409A61E19845D008C2E1A /* CCHttpConnectionOperation.m in Sources */,
 				833409A21E19845D008C2E1A /* CCCurlRequest.m in Sources */,
 				833409A81E19845D008C2E1A /* CCHttpRequest.m in Sources */,
+				83A46B491E1BFBFC00523E89 /* CCHttpPostOperation.m in Sources */,
 				833409AA1E19845D008C2E1A /* CCHttpResponse.m in Sources */,
+				83A46B4B1E1BFBFC00523E89 /* CCHttpGetOperation.m in Sources */,
 				833409A41E19845D008C2E1A /* CCCurlResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,6 +800,7 @@
 				8334091B1E191CB0008C2E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8334092A1E191CF2008C2E1A /* Build configuration list for PBXNativeTarget "CurlNetwork" */ = {
 			isa = XCConfigurationList;
@@ -792,6 +809,7 @@
 				8334092C1E191CF2008C2E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		833409671E193B23008C2E1A /* Build configuration list for PBXNativeTarget "RHURLProtocol" */ = {
 			isa = XCConfigurationList;
@@ -800,6 +818,7 @@
 				833409691E193B23008C2E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
